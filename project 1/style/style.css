@@ -1,0 +1,226 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, {
+	display: block;
+}
+body {
+
+}
+*{
+    box-sizing: border-box;
+}
+header{
+    background: url(../img/olds.jpg) no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 700px;
+}
+header .bg{
+    background-color: rgba(32, 74, 108,.9);
+    height: inherit;
+    padding-bottom: 125px;
+}
+header .wrapper{
+    width: 1000px;
+    margin: auto;
+    padding-top: 30px;
+}
+header .wrapper .info{
+    overflow: hidden;
+    margin-bottom: 70px;
+}
+header .wrapper .info img{
+    width: 250px;
+    float: left;
+}
+header .wrapper .connect{
+    float: right;
+    width: 500px;
+}
+header .wrapper .connect *{
+   float: left;
+   padding:40px 15px 0px 15px;
+   display: block;
+   text-decoration: none;
+   color: white;
+   font-family: sans-serif;
+}
+header .bg .wrapper .test{
+    width: 600px;
+    background-color: #ffffff;
+    border-top:17px solid rgb(32, 74, 108);
+    border-bottom:17px solid rgb(32, 74, 108);
+    border-radius: 10px 10px 0px 0px;
+}
+
+header .wrapper .test h1{
+    font-family: sans-serif;
+    padding:20px 0px 0px 20px;
+    font-size: 30px;
+}
+header .wrapper .test .button{
+    padding-top: 12px;
+}
+header .wrapper .test .button p,header .wrapper .test .button_end p{
+    font: 14px sans-serif;
+    padding-left: 20px;
+    font-weight: bold;
+}
+header .wrapper .test  button{
+    width: 200px;
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+    margin-top: 40px;
+    padding: 15px 0px 15px 0px;
+    font-size: 20px;
+    background-color: rgb(32, 74, 108);
+    color: #ffffff;
+}
+header .wrapper .test  button:focus{
+    outline: none;
+}
+header .wrapper .test .question{
+  padding-top: 12px;
+}
+header .wrapper .test .question p{
+    padding: 15px 0px 15px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: rgb(32, 74, 108);
+    color: #ffffff;
+}
+header .wrapper .test .question h1{
+    width: 560px;
+    font-size: 22px;
+}
+header .wrapper .test .question input[type="text"],.button_end input[type="text"]{
+    display: block;
+    margin-left: 20px;
+    margin-top: 22px;
+    width: 300px;
+    border: none;
+    border-bottom: 2px solid rgb(32, 74, 108);
+    font-size: 20px;
+}
+header .wrapper .test .question input:focus{
+     outline: none;
+}
+header .wrapper .test .question .ch{
+    width: 400px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+header .wrapper .test .question .ch input[type="text"]{
+    
+    display: block;
+    width: 100%;
+}
+header .wrapper .test .question .ch input[type="radio"]{
+display: none;
+    
+}
+header .wrapper .test .question .ch span{
+    width:20px;
+    height:20px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-right: 10px;
+    
+}
+header .wrapper .test .question .ch input[type="radio"]:checked+span{
+    background: url(../img/point.png) no-repeat center;
+}
+header .wrapper .test .question,header .wrapper .test .button_end{
+    display: none;
+}
+@media screen and (max-width:1035px){
+    header .wrapper{
+        width: 700px;
+    }
+    header .wrapper .info img{
+        width: 200px;
+    }
+    header .wrapper .connect *{
+        padding: 30px 20px 0px 20px;
+    }
+}
+@media screen and (max-width:720px){
+    header {
+        height: 800px;
+    }
+    header .wrapper{
+        width: 100%;
+    }
+     header .wrapper .info img{
+        width: 200px;
+         float: none;
+         display: block;
+         margin: auto;
+    }
+    header .wrapper .info .connect{
+        float: none;
+        overflow: hidden;
+        margin: auto;
+    }
+    header  .bg .wrapper .test{
+        margin: auto;
+        width: 90%;
+        
+    }
+    header  .bg .wrapper .test .question .ch{
+        margin: 0px;
+        width: 90%;
+        margin: auto;
+    }
+    header  .bg .wrapper .test .question .ch input[type="text"]{
+        width: 100%
+    }
+}
+@media screen and (max-width:639px){
+    header {
+        height: 850px;
+    }
+    header .wrapper .info .connect{
+       width: 100%; 
+    }
+    header .wrapper .info .connect *{
+        float: none;
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: center;
+    }
+    header  .bg .wrapper .test .question h1{
+        width: 100%;
+    }
+}
+@media screen and (max-width:573px){
+    header{
+        height: 950px;
+    }
+    header  .bg .wrapper .test .question input[type="text"]{
+        width:90%;
+        margin:10px auto;
+        
+    }
+    header  .bg .wrapper .test .question .ch input[type="text"]{
+        width:90%;
+        margin:10px auto;
+        display: block;
+    }
+    header  .bg .wrapper .test .question button{
+        width: 90%;
+        margin: auto;
+        margin-top: 40px;
+        display: block;
+    }
+}
