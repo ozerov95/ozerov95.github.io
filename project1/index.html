@@ -5,109 +5,549 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/test.js"></script>
+    <script src="js/script.js"></script>
     <link href="style/style.css" rel="stylesheet">
-   
-    <title>WTG</title>
+    <script>
+        function funcBefore(){
+            
+            
+            
+        }
+        function funcSuccess(data){
+            
+        
+            
+        }
+        
+        function funcBefore1(){
+            
+           
+            
+        }
+        function funcSuccess1(data){
+            
+            
+            
+        }
+        function funcBefore2(){
+            
+        }
+        function funcSuccess2(data){
+            
+          
+            
+        }
+        function funcBefore3(){
+           
+        }
+        function funcSuccess3(data){
+            
+            
+        }
+        
+        
+       $(document).ready(function(){
+           console.log('update js 000');
+    $("#next1").click(function(){
+
+    		qs1 = $("#qt1").val();
+    		console.log(qs1);
+
+    });
+    $("#next2").click(function(){
+    	qs2 = $("#qt2").val();
+    		console.log(qs2);
+
+    })
+    $("#next3").click(function(){
+    		qr3 = $(".q3 input[name='qr3']:checked").val();
+    		console.log(qr3);
+
+    });
+    $("#next4").click(function(){
+    		qr4 = $(".q4 input[name='qr4']:checked").val();
+    		val_41=$("#val_41").val();
+    		val_42=$("#val_42").val();
+    		console.log(qr4+":"+val_41+":"+val_42);
+    });
+    $("#next5").click(function(){
+    	   qr5 = $(".q5 input[name='qr5']:checked").val();
+    		val_51=$("#val_51").val();
+    		val_52=$("#val_52").val();
+    		console.log(qr5+":"+val_51+":"+val_52);
+
+    });
+    $("#next6").click(function(){
+    		qr6 = $(".q6 input[name='qr6']:checked").val();
+    		val_61=$("#val_61").val();
+    		val_62=$("#val_62").val();
+    		console.log(qr6+":"+val_61+":"+val_62);
+
+    });
+    $("#next7").click(function(){
+    			qs7 = $("#qt7").val();
+    		console.log(qs7);
+
+    });
+    $("#next8").click(function(){
+    	qr8 = $(".q8 input[name='qr8']:checked").val();
+    	console.log(qr8);
+    });
+    $("#next9").click(function(){
+    	qs9 = $("#qt9").val();
+    		console.log(qs9);
+
+    });
+    $("#finish").click(function(){
+        $(".button_end *").remove();
+        $(".button_end").append("<h1 class='end'>Тест отправлен!</h1>");
+        $('.end').fadeIn(1500)
+        ph=$('#ph').val();
+    
+                $.ajax({
+                   url:"index.php",
+                   type:"POST",
+                   data:({
+                       data1:qs1,
+                       data2:qs2,
+                       data3:qr3,
+                       data4:qr4,
+                       data41:val_41,
+                       data42:val_42,
+                       data5:qr5,
+                       data51:val_51,
+                       data52:val_52,
+                       data6:qr6,
+                       data61:val_51,
+                       data62:val_62,
+                       data7:qs7,
+                       data8:qr8,
+                       data9:qs9,
+                       data10:ph
+                   }),
+                   dataType:"html",
+                   beforeSend:funcBefore,
+                   success:funcSuccess
+                });
+            });
+           
+            $("#send1").click(function(){
+                $("#modal2 input,#modal2 textarea,#modal2 p,#modal2 h1").remove();
+                $("#modal2").append('<h1 class="qs">Вопрос отправлен!</h1>')
+                  email1 = $("#email1").val();
+                  ta = $("#modal2 textarea").val();
+            $("#email2").val(" ");
+            $(".form textarea").val(" ");
+                
+                    $.ajax({
+                   url:"question.php",
+                   type:"POST",
+                   data:({
+                       email:email1,
+                       ta:ta
+                   }),
+                   dataType:"html",
+                   beforeSend:funcBefore1,
+                   success:funcSuccess1
+                });
+                   
+          });
+           $("#send2").click(function(){
+                $("#modal3 input,#modal3 textarea,#modal3 p,#modal3 h1").remove();
+                $("#modal3").append('<h1 class="qs">Телефон отправлен!</h1>')  
+                phone_number = $("#pn").val()
+                
+                $.ajax({
+                   url:"cb.php",
+                   type:"POST",
+                   data:({
+                       pn:phone_number
+                   }),
+                   dataType:"html",
+                   beforeSend:funcBefore2,
+                   success:funcSuccess2
+                });  
+          }); 
+          $("#send3").click(function(){
+                  
+               email2=$("#email2").val();
+               tx=$(".form textarea").val();
+              $("#email2").val("");
+              $(".form textarea").val("");
+               $.ajax({
+                   url:"form.php",
+                   type:"POST",
+                   data:({
+                       email:email2,
+                       tx:tx
+                   }),
+                   dataType:"html",
+                   beforeSend:funcBefore3,
+                   success:funcSuccess3
+                });
+            
+          });  
+           
+           
+           
+           
+           
+       });
+    
+    
+    
+    </script>    
 </head>
 <body>
+   <div id="modal1">
+       <h1>Тест отправлен!</h1>
+       <p>закрыть</p>
+   </div>
+    <div id="modal2">
+      <span ><img src="img/exit.png" alt="" id="ex1"></span>
+       <h1>Задайте вопрос</h1>
+       <input type="text" placeholder="Введите свой Email" id="email1">
+       <textarea placeholder="Ваш вопрос"></textarea>
+       <p id="send1">Отправить</p>
+   </div>
+   <div id="modal3">
+      <span><img src="img/exit.png" alt="" id="ex2"></span>
+       <h1>Обратный звонок</h1>
+       <input type="text" placeholder="Введите свой номер" id="pn">
+       <p id="send2">Отправить</p>
+   </div>
+
+   <div id="addr">
+                                 <p>+7(960) 007-57-43</p>
+                                 <p>г. Архангельск, пл. Ленина, д. 4 ("Высотка"), 3 этаж, офис c надписью на двери "Юрист Шадрин А.Е."</p>  
+                             <p>Andrej.Shadrin.87@mail.ru
+                                Skype: Andru.Shadrin, Viber: +79062849259, Мой <a href="https://www.youtube.com/channel/UC4fivvohKMdrRiYbHF6wakQ?view_as=subscriber">Youtube канал:</a></p>
+                                 
+    </div>
+   <!----#1---->
     <header>
           <div class="bg">
                   <div class="wrapper">
-                      <div class="info">
-                      <img src="img/logo.png">
+                      <!--<div class="info" id="l1">
+                      <img src="img/log.png">
                       <div class="connect">
-                                     <a href="#">Задать вопрос</a>
-                                     <a href="#">Обратный звонок</a>
-                                     <p>+7 (960) 007-67-43</p>
-                      </div>    
-                      </div>
-
+                                     <p id="DQ">Задать вопрос</p>
+                                     <p id="DC">Обратный звонок</p>
+                                     <p>+7 (960) 007-57-43</p>
+                          </div>   
+                      </div>--->
+                        <div class="info">
+                             <img src="img/log.png">
+                             <div class="con">
+                                     <p id="DQ">Задать вопрос</p>
+                                     <p id="DC">Обратный звонок</p>
+                                     <p>+7 (960) 007-57-43</p>
+                             </div>
+                    
+                        </div>
+                       <div class="l_s">
+                             <h1>Помощь в расчете пенсии</h1>
+                             <h1>Почему Вам стоит обратиться ко мне за помощью?</h1>
+                             <div class="wr">
+                             <!---<p><span>1</span>  Оказана помощь уже более 130 пенсионерам </p>
+                             <p><span>2</span>  Работаем по всей России</p>
+                             <p><span>3</span>  Более 60 000 р. / год средняя прибавка к пенсии наших клиентов </p>
+                             <p><span>4</span> Специализация на перерасчете пенсии</p>
+                             <p><span>5</span>  9 лет успешной юридической практики</p>--->
+                             <div class="item">
+                                <h1>1</h1>
+                                 <p>Оказана помощь уже более 130 пенсионерам </p>
+                             </div>
+                             <div class="item">
+                                 <h1>2</h1>
+                                 <p> Работаем по всей России</p>
+                             </div>
+                             <div class="item">
+                                <h1>3</h1>
+                                 <p>Многочисленные положительные отзывы от клиентов</p>
+                             </div>
+                             <div class="item">
+                                 <h1>4</h1>
+                                 <p>Специализация на перерасчете пенсии</p>
+                             </div>
+                             <div class="item">
+                                <h1>5</h1>
+                                 <p> 9 лет успешной юридической практики</p>
+                             </div>
+                             
+                             
+                             </div>
+                       </div>
                       <div class="test">
-                          <h1>Тест — анализ правовой ситуаци</h1>
+                         <h1>Пройдите тест, чтобы узнать вероятность неправильного расчета вашей пенсии пенсионным фондом!</h1>
                           <div class="button">
-                              <p>Пройдите тест, чтобы узнать вероятность неправильного расчета вашей пенсии пенсионным фондом!</p>  
+                              
                               
                              <button id="start">Начать тест</button>
                           </div>
+                          
+                        <!-------?#1----------->  
                         <div class="q1 question">
                           <p>1 из 9</p>
                           <h1>Как давно Вы вышли на пенсию  ? </h1>
-                          <input type="text" value="">
+                          <input type="text"  placeholder="Введите свой ответ" name="qt1" id="qt1">
                           <button id="next1">Далее</button>
                       </div>
+                      
+                       <!-------?#2----------->  
                        <div class="q2 question">
                           <p>2 из 9</p>
                           <h1>С какого года Вы начали трудовую деятельность (указать год)? </h1>
-                          <input type="text" value="">
+                          <input type="text" placeholder="Введите свой ответ" name="qt2" id="qt2">
                           <button id="next2">Далее</button>
                       </div>
+                      
+                       <!-------?#3----------->  
                       <div class="q3 question">
                           <p>3 из 9</p>
                           <h1>Все ли периоды Вашей трудовой деятельности носили официальный характер? </h1>
                           <div class="ch">
-                              <label><input type="radio" name="Yes"  value="yes" id="ch1"><span></span>Да</label><br>
-                              <label><input type="radio" name="Yes"  value="no" id="ch1"><span></span>Нет</label>
+                              <label><input type="radio" name="qr3"  value="да" id="ch1"><span></span>Да</label><br>
+                              <label><input type="radio" name="qr3"  value="нет" id="ch1"><span></span>Нет</label>
                           </div>
                           <button id="next3">Далее</button>
                       </div>
-                
+                      
+                     <!-------?#4----------->  
                       <div class="q4 question">
                           <p>4 из 9</p>
                           <h1>При назначении Вам пенсии имелись ли отказы пенсионного фонда во включении тех или иных периодов  в страховой стаж?</h1>
                           <div class="ch">
-                              <label><input type="radio" name="Yes"  value="yes" id="ch1"><span></span> Да</label><input type="text" value=""><br>
-                              <label><input type="radio" name="Yes"  value="no" id="ch1"><span></span> Нет</label><input type="text" value="">
+                             
+                              <label><input type="radio" name="qr4"  value="да" id="ch1"><span></span> Да</label><input type="text" name="val_41" id="val_41" placeholder="Введите свой ответ"><br>
+                              
+                              <label><input type="radio" name="qr4"  value="нет" id="ch1"><span></span> Нет</label><input type="text" name="val_42" id="val_42" placeholder="Введите свой ответ">
                           </div>
                           <button id="next4">Далее</button>
                       </div>
+                      
+                       <!-------?#5----------->  
                       <div class="q5 question">
                           <p>5 из 9</p>
                           <h1>При назначении пенсии имелись ли со стороны пенсионного фонда факты затягивания назначения пенсии и с чем это было связано? </h1>
                           <div class="ch">
-                              <label><input type="radio" name="Yes"  value="yes" id="ch1"><span></span> Да</label><input type="text" value=""><br>
-                              <label><input type="radio" name="Yes"  value="no" id="ch1"><span></span> Нет</label><input type="text" value="">
+                              <label><input type="radio" name="qr5"  value="да" id="ch1"><span></span> Да</label><input type="text" placeholder="Введите свой ответ" name="val_51" id="val_51"><br>
+                              <label><input type="radio" name="qr5"  value="нет" id="ch1"><span></span> Нет</label><input type="text" name="" placeholder="Введите свой ответ" name="val_52" id="val_52">
                           </div>
                           <button id="next5">Далее</button>
                       </div>
+                      
+                       <!-------?#6----------->  
                       <div class="q6 question">
                           <p>6 из 9</p>
                           <h1>Имелись ли факты судебных разбирательств Вас с пенсионным фондом (если имелись, то по каким вопросам и чем закончилось)? </h1>
                           <div class="ch">
-                              <label><input type="radio" name="Yes"  value="yes" id="ch1"><span></span> Да</label><input type="text" value=""><br>
-                              <label><input type="radio" name="Yes"  value="no" id="ch1"><span></span> Нет</label><input type="text" value="">
+                              <label><input type="radio" name="qr6"  value="да" id="ch1"><span></span> Да</label><input type="text" placeholder="Введите свой ответ" name="val_61" id="val_61"><br>
+                              <label><input type="radio" name="qr6"  value="нет" id="ch1"><span></span> Нет</label><input type="text" placeholder="Введите свой ответ" name="val_62" id="val_62">
                           </div>
                           <button id="next6">Далее</button>
                       </div>
+                      
+                       <!-------?#7----------->  
                       <div class="q7 question">
                           <p>7 из 9</p>
                           <h1>Какой размер пенсии Вам назначен при выходе на пенсию?</h1>
-                          <input type="text" value="">
+                          <input type="text" placeholder="Введите свой ответ" name="qt7" id="qt7">
                           <button id="next7">Далее</button>
                       </div>
+                      
+                       <!-------?#8----------->  
                       <div class="q8 question">
                           <p>8 из 9</p>
                           <h1>Довольны ли Вы размером пенсии, которая Вам назначена? </h1>
                           <div class="ch">
-                              <label><input type="radio" name="Yes"  value="yes" id="ch1"><span></span>Да</label><br>
-                              <label><input type="radio" name="Yes"  value="no" id="ch1"><span></span>Нет</label>
+                              <label><input type="radio"  name="qr8"  value="да" id="ch1"><span></span>Да</label><br>
+                              <label><input type="radio"  name="qr8"   value="нет" id="ch1"><span></span>Нет</label>
                           </div>
                           <button id="next8">Далее</button>
                       </div>
+                      
+                       <!-------?#9----------->  
                       <div class="q9 question">
                           <p>9 из 9</p>
                           <h1>Какой размер пенсии Вы считаете следовало бы Вам назначить? </h1>
-                          <input type="text" value="">
+                          <input type="text" placeholder="Введите свой ответ"  name="qt9" id="qt9">
                           <button id="next9">Далее</button>
                       </div>
                       <div class="button_end">
                               <p>Напишите свой номер телефона. Мы свяжемся с Вами и сообщим о результатах теста!!</p>  
-                              <input type="text" value="">
+                              <input type="text" placeholder="Введите свой номер" name="ph" id="ph" >
                              <button id="finish">Отправить</button>
+                            
                       </div>
+            
                       </div>
                     </div>
             </div>
     </header>
     
+    <div id="text">
+        <h1>Почему необходимо проверить правильность расчета Вашей пенсии?</h1>
+        <p>Как мы с Вами видим, на фоне экономического кризиса в стране государство все более явно проводит неразумную и несправедливую социальную и пенсионную политику в отношении рядовых пенсионеров, стариков что выражается в следующем:</p>
+      
+       <div class="list">
+          <p><span>1</span> в увеличении пенсионного возраста , который был поднят осенью 2018 года c 60 до 65 лет;</p>
+          <p><span>2</span> в выплатах пенсий, которые не отвечают потребностям граждан на достойное проживание в старости;</p>
+          <p><span>3</span> в частых не включениях тех или иных периодов деятельности граждан в страховой стаж для определения размера пенсии и ее назначения;</p>
+       </div>
+          
+         
+         <div class="descr">
+             <p>Все это делается, возможно, сознательно для максимальной экономии бюджетных средств, но в ущерб пенсионерам.</p>
+             <p>
+                 Многие пенсионеры ошибочно полагают, что раз им пенсия назначена пенсионным фондом РФ, то, по- умолчанию, расчет пенсии проведен правильно и сомневаться в правильности не стоит
+             </p>
+             <p>
+                 Хотя это большое заблуждение, в котором пребывают многие обманутые старики.
+             </p>
+             <p>
+                И только те из пенсионеров, кто допускает мысль, что размер пенсии мог быть рассчитан неправильно и  размер пенсии сильно занижен, решаются побороться за свое, как и за многое в жизни, и проверить правильность расчета с помощью специалистов со стороны.
+                  
+             </p>
+             <p>
+                 И зачастую именно такие разумные пенсионеры и получают долгожданный результат в виде прибавки к пенсии, что повышает их уровень жизни и благосостояния на старости лет.
+             </p>
+             <p>
+                 Поэтому , если Вы хотите добиться повышения своей пенсии, которую Вы действительно заслужили и которой Вы достойны, то обращайтесь к нам за помощью!
+             </p>
+             <p> Мы поможем! </p>
+         </div>
+    </div>
+    <div id="count">
+        <h1>Почему не стоит самостоятельно проводить подсчет пенсии?</h1>
+        <div class="wrapper">
+            <div class="item">
+                <h1>Самостоятельно </h1>
+                <p class="show1">Показать</p>
+                <ul class="list1">
+                    <li>Отсутствие высшего юридического образования, что будет препятствовать пониманию порядка проведения расчета пенсии. </li>
+                    <li>Отсутствие опыта работы по пенсионным делам и расчету пенсии, что будет лишь вселять неуверенность в правильность проводимого Вами расчета. </li>
+                    <li>Непонимание порядка действия при расчете пенсии. Попытки понять порядок расчета могут  лишь вызвать лишь стресс и нервное истощение.</li>
+                    <li>Самостоятельный расчет пенсии практически невыполним рядовым пенсионером ввиду запутанности и сложности формул, используемые в законах.</li>
+                    <li> 
+                        С нуля нужно будет изучать всю правовую базу применительно к порядку расчета пенсии, что отнимет у Вас огромное количество времени и нервов (несколько месяцев). 	5.Сотни проведенных расчетов  гарантируют Вам быстрый результат для Вас.  Расчет занимает всего 5 рабочих дней.	 
+                    </li>
+                    <li>
+                        Расчет , если и будет Вами проведен, то он изложен на бумаге будет, скорее всего, в непотребном виде, что вызовет дальнейшие проблемы для обращения в суд с требованием о перерасчете пенсии.
+                    </li>
+                    <li>
+                        В случае, если подтвердится неправильность расчета пенсии пенсионным фондом , то Вам нужно будет обращаться в суд, что также вызовет за собой необходимость самостоятельно разбираться в теории судопроизводства, что затянет вопрос о перерасчете пенсии на длительное время. 
+                    </li>
+                </ul>
+              </div>
+                <div class="item">
+                 <h1>Юрист Шадрин А.Е </h1>
+                <p class="show2">Показать</p>
+                <ul class="list2">
+                    <li>Наличие высшего юридического образования, (диплом № 170/12 от 03.07.2009 года), что гарантирует юридическую грамотность и подкованность специалиста.</li>
+                    <li>Опыт по юридической специальности и делам пенсионеров более 9 лет, что также говорит о глубоком понимании и пенсионного законодательства и формул, используемых для расчета пенсии.</li>
+                    <li>Весь порядок расчета пенсии отработан  на протяжении многих лет и выстроен в стройный правовой механизм.</li>
+                    <li>Т.к.  делом занимается профессионал, который  досконально знает свое дело, то расчет пенсии не составит для него труда.</li>
+                    <li>Сотни проведенных расчетов  гарантируют Вам быстрый результат для Вас.  Расчет занимает всего 5 рабочих дней.</li>
+                    <li>Расчет будет стройно изложен в строгой последовательности и приведением всех необходимых формул для каждого шага расчета с приведением всех переменных для расчета. </li>
+                    <li>В случае, если подтвердится неправильность расчета пенсии , то юрист Шадрин А.Е. поможет провести уже судебное дело, что также сэкономит Вам время и нервы.</li>
+                </ul>
+        
+        </div>
+    </div>
+    </div>
+  
+   <div id="spore">
+         <h1>Что потребуется для проверки правильности расчета пенсии?</h1>
+       
+        <div class="wrapper2">
+                <div class="items">
+                    <div class="item">
+                       <h1>1</h1>
+                        <p>Обращаетесь в пенсионный фонд и пишите заявление об ознакомлении с вашим выплатным делом.</p>
+                    </div>
+                    <div class="item">
+                        <h1>2</h1>
+                        <p>После чего, Вас пригашают в пенсионный фонд и Вы фотографируете все ваше выплатное дело.</p>
+                    </div>
+                    <div class="item">
+                        <h1>3</h1>
+                        <p>Направляете мне на эл. почту:  
+                        <a href="#">Andrej.Shadrin.87@mail.ru</a> ,- фотографии вашего выплатного дела.</p>
+                    </div>
+                    <div class="item">
+                        <h1>4</h1>
+                        <p>Заключаете договор со мной и оплачиваете 10 000 рублей по реквизитам, указанным в договоре.</p>
+                    </div>
+                    <div class="item">
+                        <h1>5</h1>
+                        <p>В течение 5 дней будет произведен письменный расчет согласно вашему выплатному делу и направлен Вам на эл. почту.</p>
+                    </div>
+                </div>
+        </div>
+        <a href="file/blank.docx">Скачать бланк заявления</a>
+    </div>
+   
+    <div id="comments">
+       <h1>Высокую квалификацию подтверждают отзывы наших клиентов</h1>
+        <div class="wrapper">
+            <div class="items">
+                <div class="item">
+                    <p>" В 2017 году мне была назначена пенсия. Однако, ее размер вызвал у меня большие сомнения в правильности при ее подсчете . Сначала пытался сам произвести подсчет, однако, быстро понял, что это очень сложная задача. Через интернет нашел Андрея Евгеньевича.  Он -то мне и помог в результате. Представил мне подробный расчет по пенсии. Оказалось, что подсчет пенсионным фондом был произведен неправильно. После чего, мы с ним обратились в суд и все же выиграли дело. Спасибо Андрею Евгеньевича за проделанную работу! "</p>
+                    <h1>Ломтев Виктор Анатольевич</h1>
+                    <i>житель г. Архангельска</i>
+                    <img src="img/point2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <p>
+                      "  В ноябре 2017 года мне была назначена пенсия. При этом, размер ее меня сильно засмущал. Решила перепроверить правильность подсчета. В интернете нашла все необходимые формулы и уже было обрадовалась, что вот- вот подсчитаю. Однако, оказалось все не так просто, как кажется. Я поняла, что лучше обратиться к специалисту. В интернете нашла Андрея Евгеньевича. Он представил мне подробный расчет пенсии  и я поняла, что пенсионный фонда меня просто обсчитал.  В дальнейшем мы обращались в суд и добились перерасчет пенсии. Спасибо огромное Андрею Евгеньевичу за помощь !"               </p>
+                      <h1>Фофанова Ольга Патровна</h1>  
+                      <i>житель г. Архангельск</i>
+                      <img src="img/point2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <p>
+                        " Подсчетом пенсии Андрей Евгеньевич меня порадовал. Все распиал подробно, с формулами. Теперь все стало ясно, что пенсионный фонд неправильно мне считал пенсию.  Совсем недавно получил судебное решение о перерасчете пенсии. И все это благодаря Андрею Евгеньевичу! Без него я так бы ничего не смог сделать! "
+                    </p>
+                    <h1>Коломейцев Аркадий Валентинович</h1>
+                    <i>житель г. Архангельска</i>
+                    <img src="img/point2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div id="videos">
+        <h1>Правда о ходе пенсионной реформы! (видео от 22.07.2018 года) </h1>
+        <div class="vid">
+           <iframe src="https://www.youtube.com/embed/1eqADecv27k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+         <div class="vid">
+           <iframe  src="https://www.youtube.com/embed/2Ctd-QBIV1Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div id="contact">
+       <div class="wrapper">
+        <img src="img/log.png" alt="">
+        <div class="p_a">
+            <h1>СВЯЖИТЕСЬ СО МНОЙ</h1>
+            <p>+7(960) 007-57-43</p>
+            <p>г. Архангельск, пл. Ленина, д. 4 ("Высотка"), 3 этаж, офис c надписью на двери "Юрист Шадрин А.Е."</p>
+            <p>Andrej.Shadrin.87@mail.ru</p>
+            <p> Skype: Andru.Shadrin, Viber: +79062849259, Мой <a href="https://www.youtube.com/channel/UC4fivvohKMdrRiYbHF6wakQ?view_as=subscriber">Youtube канал:</a></p>
+        </div>
+        <div class="form">
+            <h1>ЗАПИСЬ НА КОНСУЛЬТАЦИЮ</h1>
+            <input type="text"  name="email" value="" placeholder="E-mail" id="email2">
+            <textarea name="text" placeholder="Сообщение"></textarea> 
+            <input type="button"  name="email" value="Отправить" id="send3">
+        </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; ВСЕ ПРАВА ЗАЩИЩЕНЫ МОСКВА 2018</p>
+    </footer>
 </body>
 </html>
