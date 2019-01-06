@@ -53,6 +53,20 @@
     border:none;
     color: #ffffff;
 }
+
+
+
+@media screen and (max-width:500px){
+    .win-phone{
+        width: 80%;
+        margin: auto;
+    }
+}
+
+
+
+
+
 h1, h2 {
   text-align: center;
   color: #c99748;
